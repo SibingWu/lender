@@ -3,12 +3,17 @@ public class Loan {
     private int amount;
     private boolean isPaid;
     private double interestRate;
+    private static int maxLoanAmount; // class level member
+    // not for individual object, but for all loan objects; like global variable for loan class
 
     public Loan(String borrower, int amount, double interestRate) {
         this.borrower = borrower;
         this.amount = amount;
         this.interestRate = interestRate;
         this.isPaid = false;
+        if (amount > maxLoanAmount) {
+            maxLoanAmount = amount;
+        }
     }
 
     public void setAsPaid() {
@@ -29,5 +34,10 @@ public class Loan {
     
     public double getProfit(){
         return amount*interestRate;
+    }
+
+    public static int getMaxLoan() {
+        // ask the whole class what the max is
+        return maxLoanAmount;
     }
 }

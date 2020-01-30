@@ -3,8 +3,10 @@ public class LoanManager {
     private int loansCount = 0;
 
     public void addLoan(String borrower, int amount, double interestRate){
-        loans[loansCount] = new Loan(borrower, amount, interestRate);
+        Loan loan = new Loan(borrower, amount, interestRate);
+        loans[loansCount] = loan;
         loansCount++;
+        System.out.println(Loan.getMaxLoan()); // call the class level member function use class name
     }
 
     public void setAsPaid(String borrower){
